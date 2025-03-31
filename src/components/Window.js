@@ -1,19 +1,31 @@
 import React from "react";
 import { Rnd } from "react-rnd";
+import "../styles.css";
 
-export default function Window({ id, title, children, onClose }) {
+const Window = ({ title, children, onClose }) => {
   return (
     <Rnd
-      key={id}
-      default={{ x: 100, y: 100, width: 350, height: 250 }}
-      bounds="window"
-      className="absolute bg-winGray border-4 border-black shadow-lg"
+      default={{
+        x: 100,
+        y: 100,
+        width: 400,
+        height: 300,
+      }}
+      minWidth={300}
+      minHeight={200}
+      bounds="parent"
+      dragHandleClassName="window-header"
     >
-      <div className="flex justify-between bg-pastelPink text-white px-2 py-1">
-        <span>{title}</span>
-        <button onClick={() => onClose(id)}>✖</button>
+      <div className="window">
+        <div className="window-header">
+          <span className="window-title">{title}</span>
+          <button className="window-close" onClick={onClose}>✖</button>
+        </div>
+        <hr className="window-divider" />
+        <div className="window-content">{children}</div>
       </div>
-      <div className="p-4">{children}</div>
     </Rnd>
   );
-}
+};
+
+export default Window;

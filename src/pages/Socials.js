@@ -1,14 +1,17 @@
 import React from "react";
 
-export default function Socials() {
+function Socials() {
   return (
     <div>
-      <p>Find me on:</p>
-      <ul className="list-disc ml-5">
-        <li><a href="https://github.com" className="text-winBlue underline">GitHub</a></li>
-        <li><a href="https://twitter.com" className="text-winBlue underline">Twitter</a></li>
-        <li><a href="https://linkedin.com" className="text-winBlue underline">LinkedIn</a></li>
-      </ul>
+      <h1>Contact Me</h1>
+      <form>
+        <input type="text" placeholder="Your Name" />
+        <input type="email" placeholder="Your Email" />
+        <textarea placeholder="Your Message"></textarea>
+        <button type="submit">Send</button>
+      </form>
     </div>
   );
 }
+
+export default Socials;

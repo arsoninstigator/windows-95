@@ -1,0 +1,23 @@
+.desktop {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  
+  .desktop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 7px;
+    cursor: pointer;
+  }
+  
+  .desktop-icon img {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .desktop-icon span {
+    font-size: 12px;
+  }
+  

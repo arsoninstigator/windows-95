@@ -1,50 +1,38 @@
 import React, { useState } from "react";
-import Taskbar from "./components/Taskbar";
+import Desktop from "./components/Desktop";
+import BottomPanel from "./components/BottomPanel";
 import Window from "./components/Window";
-import About from "./pages/About";
-import Projects from "./pages/Projects";
-import Socials from "./pages/Socials";
+import SpotifyWidget from "./components/SpotifyWidget";
+import "./styles.css";
 
-const windows = {
-  about: { title: "About Me", content: <About /> },
-  projects: { title: "Projects", content: <Projects /> },
-  socials: { title: "Socials", content: <Socials /> },
-};
+function App() {
+  const [openWindows, setOpenWindows] = useState([]);
 
-export default function App() {
-  const [openWindows, setOpenWindows] = useState(["about"]);
+  const openWindow = (title, content) => {
+    if (!openWindows.some((win) => win.title === title)) {
+      setOpenWindows([...openWindows, { title, content }]);
+    }
+  };
 
-  const toggleWindow = (id) => {
-    setOpenWindows((prev) =>
-      prev.includes(id) ? prev.filter((win) => win !== id) : [...prev, id]
-    );
+  const closeWindow = (title) => {
+    setOpenWindows(openWindows.filter((win) => win.title !== title));
   };
 
   return (
-    <div className="h-screen w-screen bg-beige text-black font-poppins flex flex-col">
-      <header className="w-full bg-pastelBlue text-white p-3 text-center font-semibold">
-        <h1>My Retro Personal Website</h1>
-      </header>
-
-      <div className="flex gap-4 p-4">
-        {Object.keys(windows).map((id) => (
-          <button
-            key={id}
-            onClick={() => toggleWindow(id)}
-            className="bg-winGray px-4 py-2 border-2 border-black shadow-md hover:bg-gray-300"
-          >
-            {windows[id].title}
-          </button>
-        ))}
-      </div>
-
-      {openWindows.map((id) => (
-        <Window key={id} id={id} title={windows[id].title} onClose={toggleWindow}>
-          {windows[id].content}
-        </Window>
+    <div className="app">
+      <Desktop openWindow={openWindow} />
+      <BottomPanel />
+      {openWindows.map((win) => (
+        <Window
+          key={win.title}
+          title={win.title}
+          content={win.content}
+          onClose={() => closeWindow(win.title)}
+        />
       ))}
-
-      <Taskbar toggleWindow={toggleWindow} />
+      <SpotifyWidget />
     </div>
   );
 }
+
+export default App;
