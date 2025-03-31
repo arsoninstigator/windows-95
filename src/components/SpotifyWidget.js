@@ -15,14 +15,16 @@ const SpotifyWidget = () => {
       bounds="parent"
     >
       <div className="spotify-widget">
-        <iframe
-          src="https://open.spotify.com/embed/playlist/..."
-          width="300"
-          height="80"
-          frameBorder="0"
-          allow="encrypted-media"
-          title="Spotify Player"
-        ></iframe>
+        
+         <iframe
+        src="https://open.spotify.com/embed/playlist/1mOYtHnB6e5szfX6XRDLMl"
+        width="340"
+        height="80"
+        frameBorder="0"
+        allowtransparency="true"
+        allow="encrypted-media"
+        title="Spotify Playlist"
+      ></iframe>
       </div>
     </Rnd>
   );

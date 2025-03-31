@@ -7,6 +7,10 @@ body {
     margin: 0;
     overflow: hidden;
 }
+
+a {
+  font-style: underline;
+}
   .app {
     height: 100vh;
     display: flex;
@@ -70,7 +74,8 @@ body {
   
   .window-content {
     padding: 10px;
-    line-height: 0.8;
+    line-height: 0.87;
+
   }
   
   .spotify-widget {
@@ -96,7 +101,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    padding: 20px;
+    padding: 18px;
   }
   
   .icon {
@@ -105,7 +110,6 @@ body {
     align-items: center;
     cursor: pointer;
     width: 20px;
-    text-align: center;
   }
   
   .icon img {
@@ -162,3 +166,6 @@ body {
     left: 10px;
     font-size: 18px;
   }
+
+  
+  

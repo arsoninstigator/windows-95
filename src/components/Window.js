@@ -5,26 +5,31 @@ import "../styles.css";
 const Window = ({ title, children, onClose }) => {
   return (
     <Rnd
-      default={{
-        x: 100,
-        y: 100,
-        width: 400,
-        height: 300,
-      }}
-      minWidth={300}
-      minHeight={200}
-      bounds="parent"
-      dragHandleClassName="window-header"
-    >
-      <div className="window">
-        <div className="window-header">
-          <span className="window-title">{title}</span>
-          <button className="window-close" onClick={onClose}>✖</button>
-        </div>
-        <hr className="window-divider" />
-        <div className="window-content">{children}</div>
-      </div>
-    </Rnd>
+  default={{
+    x: 100, 
+    y: 100, 
+    width: 400, 
+    height: 300
+  }}
+  bounds="parent" 
+  enableResizing={{
+    top: false,
+    right: true,
+    bottom: true,
+    left: false
+  }}
+  dragHandleClassName="window-header"
+>
+  <div className="window">
+    <div className="window-header">
+      <span>{title}</span>
+      <button onClick={onClose} className="close-btn">X</button>
+    </div>
+    <div className="window-content">
+      {children}
+    </div>
+  </div>
+</Rnd>
   );
 };
 
